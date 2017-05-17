@@ -1,7 +1,7 @@
 /**
  * Created by lukas on 5-5-2017.
  */
-function card()
+function Card()
 {
 
     var cardDescription;
@@ -17,13 +17,18 @@ function card()
         }
 
         cardDescription = value + " of " + suite;
-        imageName = "art/" + stringValue  + suite.charAt(0); + ".gif";
-        image = new image();
+        imageName = "art/" + stringValue  + suite.charAt(0) + ".gif";
+        image = new Image();
         image.src = imageName;
     };
 
-    return
+    var draw = function(x, y)
     {
-        setCard : setCard
+        gameWindow.context.drawImage(image, x, y);
     };
-};
+
+    return {
+        setCard : setCard,
+        draw : draw
+    };
+}
