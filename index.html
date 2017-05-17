@@ -3,14 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <title>CWEE</title>
+        <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css">
         <link rel="stylesheet" href="css/style.css"/>
     </head>
-    <body>
+    <body ng-app="CWEE" ng-controller="mainCtrl">
         <!--the canvas for the game-->
-        <canvas id="canvas">This browser does not support HTML5 please update your browser</canvas>
+        <!--<canvas id="canvas">This browser does not support HTML5 please update your browser</canvas>-->
+
+        <ng-view></ng-view>
+
+        <!--import frameworks-->
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-route/angular-route.min.js"></script>
+        <script src="node_modules/angular-material/angular-material.min.js"></script>
 
         <!--imports for the game-->
-        <script src="js/index.js"></script>
-        <script src="js/window/window.js"></script>
+        <script src="index.js"></script>
+        <script src="views/index.js"></script>
+        <script src="views/game/index.js"></script>
+        <script src="elements/index.js"></script>
+        <script src="elements/card/card.js"></script>
+
+        <!--<script src="js/window/window.js"></script>-->
+        <!--<script src="js/game/Card.js"></script>-->
+        <!--<script src="js/game/Player.js"></script>-->
+        <!--<script src="js/game/Game.js"></script>-->
     </body>
 </html>

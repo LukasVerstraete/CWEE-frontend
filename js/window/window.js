@@ -21,12 +21,14 @@ var setupWindow = function()
     gameWindow.context = context;
     gameWindow.width = WIDTH;
     gameWindow.height = HEIGHT;
+    gameWindow.ratio = WIDTH / HEIGHT;
 }
 
 var resize = function()
 {
     gameWindow.width = window.innerWidth;
     gameWindow.height = window.innerHeight;
+    gameWindow.ratio = gameWindow.width / gameWindow.height;
     gameWindow.canvas.width = gameWindow.width;
     gameWindow.canvas.height = gameWindow.height;
 }

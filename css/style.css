@@ -2,9 +2,15 @@ body
 {
     padding: 0;
     margin: 0;
+    background-color: #3A6333;
 }
 
 canvas
 {
     background: black;
+}
+
+.card-rise:hover
+{
+    margin-top : -20px;
 }
