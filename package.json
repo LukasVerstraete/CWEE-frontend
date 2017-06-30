@@ -15,6 +15,7 @@
     "url": "https://github.com/misterlmmagi/CWEE-frontend/issues"
   },
   "homepage": "https://github.com/misterlmmagi/CWEE-frontend#readme",
+  "description": "The frontend of CWEE the amazing wiezen app",
   "dependencies": {
     "socket.io": "^2.0.3"
   }
