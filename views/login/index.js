@@ -5,17 +5,35 @@ angular.module('CWEE.views.login', ['ngRoute'])
 .config(['$routeProvider', function($routProvider)
 {
     $routProvider
-    .when('/login',              {
+    .when('/login',
+    {
         templateUrl: 'views/login/index.html',
         controller: 'loginController',
         reloadOnSearch: false
     })
+    .when('/login/connect',
+    {
+        templateUrl: 'views/login/connect.html',
+        controller: 'loginConnectController',
+        reloadOnSearch: false
+    })
 }])
 
-.controller('loginController', ['$scope', function($scope)
+.controller('loginController', ['$scope', '$location', function($scope, $location)
 {
-    $scope.card = {
-        value : 1,
-        suite : 'hearts'
+    $scope.toConnect = function()
+    {
+        $location.path('/login/connect');
+    };
+}])
+.controller('loginConnectController', ['$scope', '$location', 'GameService', function($scope, $location, GameService)
+{
+    $scope.connect = function(form)
+    {
+        console.log('attempting connection...');
+        GameService.connect(form.user, function()
+        {
+            $location.path('/game');
+        });
     };
 }]);

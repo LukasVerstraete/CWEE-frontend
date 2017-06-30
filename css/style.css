@@ -5,10 +5,25 @@ body
     background-color: #3A6333;
 }
 
-canvas
+.flex-height
 {
-    background: black;
+    min-height: 100%;
 }
+
+md-content
+{
+    background-color: #3A6333;
+}
+
+.color-white
+{
+    color: white;
+}
+
+/*canvas*/
+/*{*/
+    /*background: black;*/
+/*}*/
 
 .card-rise:hover
 {

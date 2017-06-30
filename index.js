@@ -1,7 +1,7 @@
 /**
  * Created by lukas on 5-5-2017.
  */
-angular.module('CWEE', ['CWEE.views', 'CWEE.elements']);
+angular.module('CWEE', ['ngMaterial', 'CWEE.views', 'CWEE.elements', 'CWEE.services']);
 
 
 
