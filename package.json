@@ -15,5 +15,7 @@
     "url": "https://github.com/misterlmmagi/CWEE-frontend/issues"
   },
   "homepage": "https://github.com/misterlmmagi/CWEE-frontend#readme",
-  "description": ""
+  "dependencies": {
+    "socket.io": "^2.0.3"
+  }
 }
