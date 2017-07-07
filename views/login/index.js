@@ -19,11 +19,14 @@ angular.module('CWEE.views.login', ['ngRoute'])
     })
 }])
 
-.controller('loginController', ['$scope', '$location', function($scope, $location)
+.controller('loginController', ['$scope', '$location', 'UserService', function($scope, $location, UserService)
 {
     $scope.toConnect = function()
     {
-        $location.path('/login/connect');
+        if(UserService.getCurrentUser())
+            $location.path('/game');
+        else
+            $location.path('/login/connect');
     };
 }])
 .controller('loginConnectController', ['$scope', '$location', 'GameService', function($scope, $location, GameService)

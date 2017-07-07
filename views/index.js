@@ -7,5 +7,9 @@ angular.module('CWEE.views', ['ngRoute', 'CWEE.views.game', 'CWEE.views.login'])
     $routeProvider.otherwise("/login");
 })
 
+.run(['GameService', function(GameService) {
+    //This makes sure game service is started
+}])
+
 .controller('mainCtrl', [function()
 {}]);
