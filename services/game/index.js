@@ -34,31 +34,85 @@ angular.module('CWEE.services.server', [])
     };
 }])
 
-.service('GameService', ['ServerInteractService', 'UserService', function(ServerInteractService, UserService)
+.service('GameService', ['$location', 'ServerInteractService', 'UserService', function($location, ServerInteractService, UserService)
 {
-    this.connect = function(data, callback)
+    var self = this;
+    console.log(self);
+    UserService.lookForUser();
+    if(UserService.getCurrentUser())
+    {
+        connect(UserService.getCurrentUser(), null);
+        $location.path('/game');
+    }
+
+    function connect(data, callback)
     {
         ServerInteractService.emit('CONNECT', data);
         ServerInteractService.on('READY', function(data)
         {
-            console.log('READY: ' + data);
             UserService.setCurrentUser(data);
-            callback();
+            if(callback)
+                callback();
         });
+    }
+
+    function disconnect(data, callback)
+    {
+        ServerInteractService.emit('DISCONNECT', data);
+        ServerInteractService.on('READY', function(data)
+        {
+            UserService.disconnectUser();
+            if(callback)
+                callback();
+        });
+    }
+
+    return {
+        connect: connect,
+        disconnect: disconnect
     };
+
+    //this.connect = function(data, callback)
+    //{
+    //    ServerInteractService.emit('RECONNECT')
+    //}
 }])
 
-.service('UserService', [function()
+.service('UserService', ['localStorageService', function(localStorageService)
 {
     var currentUser = null;
 
     this.setCurrentUser = function(user)
     {
         currentUser = user;
+        localStorageService.set('clientId', user.clientId);
+        localStorageService.set('username', user.username);
     };
 
     this.getCurrentUser = function()
     {
         return currentUser;
+    };
+
+    this.disconnectUser = function()
+    {
+        currentUser = null;
+        localStorageService.remove('clientId');
+        localStorageService.remove('username');
+    }
+
+    this.lookForUser = function()
+    {
+        console.log('looking for user');
+        var user = {};
+        var id = localStorageService.get('clientId');
+        var name = localStorageService.get('username');
+        console.log();
+        if(id || name)
+        {
+            user.clientId = id;
+            user.username = name;
+            currentUser = user;
+        }
     };
 }]);
