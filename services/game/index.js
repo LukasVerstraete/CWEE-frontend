@@ -36,19 +36,44 @@ angular.module('CWEE.services.server', [])
 
 .service('GameService', ['$location', 'ServerInteractService', 'UserService', function($location, ServerInteractService, UserService)
 {
-    var self = this;
-    console.log(self);
+
+    //at startup of the game service
+    var currentGame = null;
     UserService.lookForUser();
+
     if(UserService.getCurrentUser())
     {
         connect(UserService.getCurrentUser(), null);
         $location.path('/game');
     }
+    ////////////////////////////////
+
+    function getCurrentGame()
+    {
+        return currentGame;
+    }
+
+    function setCurrentGame(game)
+    {
+        if(game)
+            currentGame = game;
+    }
+
+    function createGame(data, callback)
+    {
+        ServerInteractService.emit('CREATE_GAME', data);
+        ServerInteractService.on('READY_CREATE_GAME', function(data)
+        {
+            setCurrentGame(data);
+            if(callback)
+                callback();
+        });
+    }
 
     function connect(data, callback)
     {
         ServerInteractService.emit('CONNECT', data);
-        ServerInteractService.on('READY', function(data)
+        ServerInteractService.on('READY_CONNECT', function(data)
         {
             UserService.setCurrentUser(data);
             if(callback)
@@ -59,7 +84,7 @@ angular.module('CWEE.services.server', [])
     function disconnect(data, callback)
     {
         ServerInteractService.emit('DISCONNECT', data);
-        ServerInteractService.on('READY', function(data)
+        ServerInteractService.on('READY_DISCONNECT', function(data)
         {
             UserService.disconnectUser();
             if(callback)
@@ -69,13 +94,10 @@ angular.module('CWEE.services.server', [])
 
     return {
         connect: connect,
-        disconnect: disconnect
+        disconnect: disconnect,
+        getCurrentGame: getCurrentGame,
+        setCurrentGame: setCurrentGame
     };
-
-    //this.connect = function(data, callback)
-    //{
-    //    ServerInteractService.emit('RECONNECT')
-    //}
 }])
 
 .service('UserService', ['localStorageService', function(localStorageService)
