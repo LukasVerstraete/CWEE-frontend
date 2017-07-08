@@ -15,7 +15,6 @@ angular.module('CWEE.views.game', ['ngRoute'])
 .controller('gameController', ['$scope', 'UserService', function($scope, UserService)
 {
     $scope.user = UserService.getCurrentUser();
-    console.log($scope.user);
 
     $scope.card = {
         value : 1,

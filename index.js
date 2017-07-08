@@ -1,14 +1,13 @@
 /**
  * Created by lukas on 5-5-2017.
  */
-angular.module('CWEE', ['ngMaterial', 'CWEE.views', 'CWEE.elements', 'CWEE.services']);
+angular.module('CWEE', ['ngMaterial', 'LocalStorageModule', 'CWEE.views', 'CWEE.elements', 'CWEE.services'])
 
-
-
-
-
-
-
+.config(function(localStorageServiceProvider)
+{
+    localStorageServiceProvider.setPrefix('CWEE');
+    localStorageServiceProvider.setStorageType('sessionStorage');
+});
 
 
 // it was once fortold that this code would start a revolution...
