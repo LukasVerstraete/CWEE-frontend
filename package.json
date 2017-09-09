@@ -17,9 +17,11 @@
   "homepage": "https://github.com/misterlmmagi/CWEE-frontend#readme",
   "description": "The frontend of CWEE the amazing wiezen app",
   "dependencies": {
-    "angular-animate": "^1.6.5",
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.4",
     "angular-aria": "^1.6.5",
     "angular-local-storage": "^0.6.0",
-    "socket.io": "^2.0.3"
+    "angular-route": "^1.6.5",
+    "socket.io-client": "^2.0.3"
   }
 }
