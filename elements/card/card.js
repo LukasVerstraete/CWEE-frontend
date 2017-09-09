@@ -33,7 +33,7 @@ angular.module('CWEE.elements.card',['ngRoute'])
                 };
 
                 $scope.imageStyle = {
-                    'min-width' : '3.5em',
+                    'min-width' : '56px',
                     'image-rendering' : 'pixelated'
                 };
             }
