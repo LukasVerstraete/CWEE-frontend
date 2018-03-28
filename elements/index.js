@@ -1,4 +1,4 @@
 /**
  * Created by lukas on 18-5-2017.
  */
-angular.module('CWEE.elements', ['CWEE.elements.card']);
+angular.module('CWEE.elements', ['CWEE.elements.card', 'CWEE.elements.cardStack']);

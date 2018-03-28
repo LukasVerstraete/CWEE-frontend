@@ -11,7 +11,7 @@
         <!--the canvas for the game-->
         <!--<canvas id="canvas">This browser does not support HTML5 please update your browser</canvas>-->
 
-        <ng-view class="flex-height" layout="column" layout-align="center center"></ng-view>
+        <ng-view style="overflow: hidden" class="flex-height" layout="column" layout-align="center center"></ng-view>
 
         <!--import frameworks-->
         <script src="node_modules/angular/angular.js"></script>
@@ -27,8 +27,10 @@
         <script src="views/index.js"></script>
         <script src="views/game/index.js"></script>
         <script src="views/login/index.js"></script>
+        <script src="views/lobby/index.js"></script>
         <script src="elements/index.js"></script>
         <script src="elements/card/card.js"></script>
+        <script src="elements/cardStack/cardStack.js"></script>
         <script src="services/index.js"></script>
         <script src="services/game/index.js"></script>
 

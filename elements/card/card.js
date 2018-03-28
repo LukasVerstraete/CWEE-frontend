@@ -15,7 +15,18 @@ angular.module('CWEE.elements.card',['ngRoute'])
             controller: function($scope)
             {
                 // converting card to correct image
-                var cardName = '0' + $scope.card.value + $scope.card.suite.charAt(0);
+                var cardName;
+                if(!$scope.card.hidden)
+                {
+                    if($scope.card.value < 10)
+                        cardName = '0' + $scope.card.value + $scope.card.suite.charAt(0);
+                    else
+                        cardName = $scope.card.value + $scope.card.suite.charAt(0);
+                }
+                else
+                {
+                    cardName = $scope.card.value;
+                }
                 var imageUrl = 'art/' + cardName + '.gif';
                 $scope.imageUrl = imageUrl;
                 var x = $scope.x + 'px';
@@ -27,15 +38,29 @@ angular.module('CWEE.elements.card',['ngRoute'])
                 }
 
                 $scope.style = {
-                    'position' : 'absolute',
-                    'left' : x,
-                    'top' : y
+                    // 'position' : 'absolute',
+                    // 'left' : x,
+                    // 'top' : y,
+                    'outline' : 'none'
                 };
 
+                if($scope.card.hover)
+                    $scope.hoverClass = 'card-rise';
                 $scope.imageStyle = {
-                    'min-width' : '56px',
+                    'min-width' : '70px',
                     'image-rendering' : 'pixelated'
                 };
+                if($scope.card.landscape)
+                {
+                    if($scope.card.hover)
+                        $scope.hoverClass = 'card-landscape-rise';
+                    $scope.imageStyle = {
+                        'min-height' : '70px',
+                        'image-rendering' : 'pixelated'
+                    };
+                }
+
+                
             }
         };
     }])

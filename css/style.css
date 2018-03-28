@@ -20,6 +20,11 @@ md-content
     color: white;
 }
 
+body
+{
+    overflow: hidden;
+}
+
 /*canvas*/
 /*{*/
     /*background: black;*/
@@ -28,4 +33,9 @@ md-content
 .card-rise:hover
 {
     margin-top : -20px;
+}
+
+.card-landscape-rise:hover
+{
+    margin-left : 20px;
 }

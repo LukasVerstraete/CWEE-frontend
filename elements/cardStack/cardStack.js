@@ -12,35 +12,63 @@ angular.module('CWEE.elements.cardStack',['ngRoute'])
         },
         templateUrl: 'elements/cardStack/index.html',
         controller: function($scope, $window)
-        {
-            var cardIndent = 50;
-
-            // setting the correct on screen position
-            var stackWidth = $scope.cards.length * 20;
-            var screenHalfWidth = $window.innerWidth / 2;
-            var screenHalfHeight = $window.innerHeight / 2;
-
-            var x = screenHalfWidth - stackWidth / 2;
-            var y = $window.innerHeight + cardIndent;
-
-            if($scope.position == 2)
+        {    
+            var columns = '';
+            for(let i = 0; i < $scope.cards.length; i++)
             {
-                x = -cardIndent;
-                y = screenHalfHeight - stackWidth / 2;
-            }
-            if($scope.position == 3)
-                y = -cardIndent;
-            if($scope.position == 4)
-            {
-                x = $window.innerWidth + cardIndent;
-                y = screenHalfHeight - stackWidth / 2;
+                columns += 'auto ';
             }
 
             $scope.style = {
                 'position' : 'absolute',
-                'left' : x,
-                'top' : y
+                'left' : '35%',
+                'bottom' : '-40px',
+                'display': 'grid',
+                'grid-template-columns' : columns,
             };
+
+            $scope.cardStyle = {
+                'margin-left' : '-40px'
+            };
+
+            if($scope.position == 2)
+            {
+                $scope.style = {
+                    'position' : 'absolute',
+                    'left' : '-40px',
+                    'top' : '35%',
+                    'display': 'grid',
+                    'grid-template-rows' : columns,
+                };
+
+                $scope.cardStyle = {
+                    'margin-top' : '-50px'
+                };
+            }
+            if($scope.position == 3)
+            {
+                $scope.style = {
+                    'position' : 'absolute',
+                    'left' : '35%',
+                    'top' : '-40px',
+                    'display': 'grid',
+                    'grid-template-columns' : columns,
+                };
+            }
+            if($scope.position == 4)
+            {
+                $scope.style = {
+                    'position' : 'absolute',
+                    'right' : '-40px',
+                    'top' : '35%',
+                    'display': 'grid',
+                    'grid-template-rows' : columns,
+                };
+
+                $scope.cardStyle = {
+                    'margin-top' : '-50px'
+                };
+            }
         }
     };
 }])

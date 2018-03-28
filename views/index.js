@@ -1,7 +1,7 @@
 /**
  * Created by lukas on 18-5-2017.
  */
-angular.module('CWEE.views', ['ngRoute', 'CWEE.views.game', 'CWEE.views.login'])
+angular.module('CWEE.views', ['ngRoute', 'CWEE.views.game', 'CWEE.views.login', 'CWEE.views.lobby'])
 
 .config(function($routeProvider) {
     $routeProvider.otherwise("/login");

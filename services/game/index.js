@@ -34,6 +34,19 @@ angular.module('CWEE.services.server', [])
     };
 }])
 
+.service('LobbyService', ['$location', 'ServerInteractService', function($location, ServerInteractService) 
+{
+    function getServerList(callback)
+    {
+        ServerInteractService.emit('GAME_LIST', null);
+        ServerInteractService.on('GAME_LIST', function(data) 
+        {
+            if(callback)
+                callback(data);
+        });
+    }
+}])
+
 .service('GameService', ['$location', 'ServerInteractService', 'UserService', function($location, ServerInteractService, UserService)
 {
 
