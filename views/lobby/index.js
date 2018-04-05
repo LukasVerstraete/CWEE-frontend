@@ -12,9 +12,27 @@ angular.module('CWEE.views.lobby', ['ngRoute'])
     })
 }])
 
-.controller('gameController', ['$scope', 'UserService', 'GameService', function($scope, UserService, GameService)
+.controller('lobbyController', ['$scope', 'UserService', 'GameService', 'LobbyService', function($scope, UserService, GameService, LobbyService)
 {
-    $scope.user = UserService.getCurrentUser();
-    $scope.games = GameService.getCurrentGames();
 
+    //setup
+    $scope.user = UserService.getCurrentUser();
+    getServerList();
+
+    $scope.createGame = function(form)
+    {
+        GameService.createGame(form.game, function() 
+        {
+            getServerList();
+        });
+        form.game.name = '';
+    };
+
+    function getServerList()
+    {
+        LobbyService.getServerList(function(data) 
+        {
+            $scope.games = data;
+        });
+    }
 }]);

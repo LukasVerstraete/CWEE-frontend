@@ -20,6 +20,16 @@ md-content
     color: white;
 }
 
+.bg-white
+{
+    background-color: white;
+}
+
+.bg-list-green
+{
+    background-color: rgb(72, 95, 69);
+}
+
 body
 {
     overflow: hidden;

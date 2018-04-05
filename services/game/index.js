@@ -45,6 +45,10 @@ angular.module('CWEE.services.server', [])
                 callback(data);
         });
     }
+
+    return {
+        getServerList: getServerList
+    };
 }])
 
 .service('GameService', ['$location', 'ServerInteractService', 'UserService', function($location, ServerInteractService, UserService)
@@ -57,7 +61,6 @@ angular.module('CWEE.services.server', [])
     if(UserService.getCurrentUser())
     {
         connect(UserService.getCurrentUser(), null);
-        $location.path('/game');
     }
     ////////////////////////////////
 
@@ -109,7 +112,8 @@ angular.module('CWEE.services.server', [])
         connect: connect,
         disconnect: disconnect,
         getCurrentGame: getCurrentGame,
-        setCurrentGame: setCurrentGame
+        setCurrentGame: setCurrentGame,
+        createGame: createGame
     };
 }])
 

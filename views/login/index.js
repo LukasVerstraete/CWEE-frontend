@@ -24,7 +24,7 @@ angular.module('CWEE.views.login', ['ngRoute'])
     $scope.toConnect = function()
     {
         if(UserService.getCurrentUser())
-            $location.path('/game');
+            $location.path('/lobby');
         else
             $location.path('/login/connect');
     };
@@ -36,7 +36,7 @@ angular.module('CWEE.views.login', ['ngRoute'])
         console.log('attempting connection...');
         GameService.connect(form.user, function()
         {
-            $location.path('/game');
+            $location.path('/lobby');
         });
     };
 }]);
