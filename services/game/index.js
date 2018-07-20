@@ -80,7 +80,6 @@ angular.module('CWEE.services.server', [])
         ServerInteractService.emit('CREATE_GAME', data);
         ServerInteractService.on('READY_CREATE_GAME', function(data)
         {
-            setCurrentGame(data);
             if(callback)
                 callback();
         });
@@ -108,12 +107,26 @@ angular.module('CWEE.services.server', [])
         });
     }
 
+    function joinGame(data, callback)
+    {
+        data.player = UserService.getCurrentUser();
+        ServerInteractService.emit('JOIN_GAME', data);
+        ServerInteractService.on('JOIN_GAME', function(data) 
+        {
+            console.log(data);
+            setCurrentGame(data);
+            if(callback)
+                callback();
+        });
+    }
+
     return {
         connect: connect,
         disconnect: disconnect,
         getCurrentGame: getCurrentGame,
         setCurrentGame: setCurrentGame,
-        createGame: createGame
+        createGame: createGame,
+        joinGame: joinGame
     };
 }])
 

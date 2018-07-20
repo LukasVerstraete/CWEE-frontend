@@ -30,6 +30,11 @@ md-content
     background-color: rgb(72, 95, 69);
 }
 
+.game-list
+{
+    margin-top: 30px;
+}
+
 body
 {
     overflow: hidden;

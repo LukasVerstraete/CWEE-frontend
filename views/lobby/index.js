@@ -12,7 +12,7 @@ angular.module('CWEE.views.lobby', ['ngRoute'])
     })
 }])
 
-.controller('lobbyController', ['$scope', 'UserService', 'GameService', 'LobbyService', function($scope, UserService, GameService, LobbyService)
+.controller('lobbyController', ['$scope', '$location', 'UserService', 'GameService', 'LobbyService', function($scope, $location, UserService, GameService, LobbyService)
 {
 
     //setup
@@ -27,6 +27,14 @@ angular.module('CWEE.views.lobby', ['ngRoute'])
         });
         form.game.name = '';
     };
+
+    $scope.joinGame = function(gameName)
+    {
+        GameService.joinGame({name: gameName}, function(data) 
+        {
+            $location.path('/game');
+        });
+    }
 
     function getServerList()
     {

@@ -9,9 +9,11 @@
             </md-input-container>
         </form>
     </md-list-item>
-    <md-list-item class='bg-list-green' ng-repeat="game in games" ng-click="null">
-        <h3 class='color-white'>{{game.name}}</h3>
-        <h4 class='color-white md-secondary'>{{game.players.length}}/4</h4>
-        <md-divider></md-divider>
-    </md-list-item>
+    <md-list class="game-list">
+        <md-list-item class='bg-list-green' ng-repeat="game in games" ng-click="joinGame(game.name)">
+            <h3 class='color-white'>{{game.name}}</h3>
+            <h4 class='color-white md-secondary'>{{game.players.length}}/4</h4>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
 </md-list>
